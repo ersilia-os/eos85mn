@@ -1,39 +1,67 @@
-# imports
-import os
-import csv
 import sys
-from rdkit import Chem
-from rdkit.Chem.Descriptors import MolWt
 
-# parse arguments
-input_file = sys.argv[1]
-output_file = sys.argv[2]
+import numpy as np
+import torch
+from transformers import BertForMaskedLM, PreTrainedTokenizerFast
 
-# current file directory
-root = os.path.dirname(os.path.abspath(__file__))
+from ersilia_pack_utils.core import read_smiles, write_out
 
-# my model
-def my_model(smiles_list):
-    return [MolWt(Chem.MolFromSmiles(smi)) for smi in smiles_list]
+from fg_tokenize import smiles_to_fg_enhanced
+
+HF_REPO = "thaonguyen217/farm_molecular_representation"
+
+EMBED_DIM = 768
+MAX_LEN = 512
 
 
-# read SMILES from .csv file, assuming one column with header
-with open(input_file, "r") as f:
-    reader = csv.reader(f)
-    next(reader)  # skip header
-    smiles_list = [r[0] for r in reader]
+def load_model():
+    tokenizer = PreTrainedTokenizerFast.from_pretrained(HF_REPO)
+    model = BertForMaskedLM.from_pretrained(HF_REPO)
+    model.to("cpu")
+    model.eval()
+    return tokenizer, model
 
-# run model
-outputs = my_model(smiles_list)
 
-#check input and output have the same lenght
-input_len = len(smiles_list)
-output_len = len(outputs)
-assert input_len == output_len
+def embed_one(tokenizer, model, smiles: str) -> np.ndarray:
+    """Molecule-level embedding; mean pool over attention-masked tokens."""
+    fg_text = smiles_to_fg_enhanced(smiles)
+    inputs = tokenizer(
+        fg_text,
+        return_tensors="pt",
+        truncation=True,
+        max_length=MAX_LEN,
+    )
+    with torch.no_grad():
+        outputs = model(**inputs, output_hidden_states=True)
+    last_hidden = outputs.hidden_states[-1][0]
+    attention_mask = inputs["attention_mask"][0]
+    masked = last_hidden * attention_mask.unsqueeze(-1)
+    summed = masked.sum(dim=0)
+    count = attention_mask.sum().clamp(min=1)
+    pooled = summed / count
+    return pooled.cpu().numpy().astype(np.float32)
 
-# write output in a .csv file
-with open(output_file, "w") as f:
-    writer = csv.writer(f)
-    writer.writerow(["value"])  # header
-    for o in outputs:
-        writer.writerow([o])
+
+def main(input_file: str, output_file: str) -> None:
+    header, smiles_list = read_smiles(input_file)
+    tokenizer, model = load_model()
+
+    results = []
+    for smi in smiles_list:
+        try:
+            emb = embed_one(tokenizer, model, smi)
+        except (ValueError, RuntimeError):
+            emb = np.full((EMBED_DIM,), np.nan, dtype=np.float32)
+        results.append(emb)
+
+    out_header = [f"feat_{i:03d}" for i in range(EMBED_DIM)]
+    write_out(
+        np.array(results, dtype=np.float32),
+        out_header,
+        output_file,
+        np.float32,
+    )
+
+
+if __name__ == "__main__":
+    main(sys.argv[1], sys.argv[2])
