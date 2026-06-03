@@ -2,45 +2,38 @@ Identifier: eos85mn
 Slug: farm-representation
 Status: In progress
 Title: FARM functional group-aware molecular representations
-Description: FARM is a molecular representation model that including functional group-aware
+Description: FARM is a molecular representation model that uses functional group-aware
   tokenization, bridging the gap between SMILES and natural language. FARM has been
-  benchmarked in the MoleculeNet dataset (SOTA in 10/12 tasks) and contains atom-level
-  and molecule-level embeddings. In the current model, we offer the molecule-level
-  embeddings from FARM.
+  benchmarked on MoleculeNet (SOTA on most tasks) and provides atom-level and
+  molecule-level embeddings. This model returns 768-dimensional molecule-level
+  embeddings from the contrastive FARM BERT checkpoint.
 Deployment:
 - Local
 - Online
-Source: Local, Online
-Source Type: Internal, Replicated, External
-Task: Annotation, Representation, Sampling
-Subtask: Property calculation or prediction, Activity prediction, Featurization, Projection,
-  Similarity search, Generation
+Source: Local
+Source Type: External
+Task: Representation
+Subtask: Featurization
 Input:
 - Compound
 Input Dimension: 1
 Output:
 - Value
-- Score
-- Compound
-- Probability
-- Experimental value
-- '...'
-Output Dimension: 1
-Output Consistency: Fixed, Variable
-Interpretation: 'The output of this template model should be interpreted like this.
-
-  '
+Output Dimension: 768
+Output Consistency: Fixed
+Interpretation: 768-dimensional molecule-level embedding from the FARM contrastive BERT
+  model, suitable as input features for downstream property prediction. Individual
+  dimensions are not chemically interpretable. Sequences are truncated to 512 BERT
+  subword tokens during encoding.
 Tag:
 - Embedding
 Biomedical Area:
-- Biomedical Area 1
-- Biomedical Area 2
+- Drug Discovery
 Target Organism:
-- Target Organism 1
-- Target Organism 2
-Publication Type: Peer reviewed, Preprint, Other
-Publication Year: 2025
+- Any
+Publication Type: Preprint
+Publication Year: 2024
 Publication: https://doi.org/10.48550/arXiv.2410.02082
 Source Code: https://github.com/thaonguyen217/farm_molecular_representation
 License: MIT
-Publication: https://doi.org/10.48550/arXiv.2410.02082
+Contributor: AnshikaVashistha

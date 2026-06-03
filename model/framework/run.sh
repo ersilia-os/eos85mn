@@ -1,1 +1,2 @@
-python $1/code/main.py $2 $3
+#!/bin/bash
+python "$1/code/main.py" "$2" "$3"
