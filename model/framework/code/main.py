@@ -1,3 +1,4 @@
+import os
 import sys
 
 import numpy as np
@@ -8,15 +9,18 @@ from ersilia_pack_utils.core import read_smiles, write_out
 
 from fg_tokenize import smiles_to_fg_enhanced
 
-HF_REPO = "thaonguyen217/farm_molecular_representation"
+# Weights are fetched at build time and bundled under model/checkpoints/
+# (see access.json); they are not downloaded from HuggingFace at inference time.
+ROOT = os.path.dirname(os.path.abspath(__file__))
+CHECKPOINTS_DIR = os.path.abspath(os.path.join(ROOT, "..", "..", "checkpoints"))
 
 EMBED_DIM = 768
 MAX_LEN = 512
 
 
 def load_model():
-    tokenizer = PreTrainedTokenizerFast.from_pretrained(HF_REPO)
-    model = BertForMaskedLM.from_pretrained(HF_REPO)
+    tokenizer = PreTrainedTokenizerFast.from_pretrained(CHECKPOINTS_DIR)
+    model = BertForMaskedLM.from_pretrained(CHECKPOINTS_DIR)
     model.to("cpu")
     model.eval()
     return tokenizer, model
