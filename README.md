@@ -50,12 +50,12 @@ _10 of 768 columns are shown_
 ### Resource Consumption
 - **Model Size (Mb):** `394`
 - **Environment Size (Mb):** `1370`
-- **Image Size (Mb):** `5975.07`
+- **Image Size (Mb):** `2146.62`
 
 **Computational Performance (seconds):**
-- 10 inputs: `33.93`
-- 100 inputs: `39.61`
-- 10000 inputs: `638.71`
+- 10 inputs: `33.68`
+- 100 inputs: `28.64`
+- 10000 inputs: `500.77`
 
 ### References
 - **Source Code**: [https://github.com/thaonguyen217/farm_molecular_representation](https://github.com/thaonguyen217/farm_molecular_representation)
