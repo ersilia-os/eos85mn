@@ -2,8 +2,7 @@
 
 FARM is a molecular representation model that uses functional group-aware tokenization, bridging the gap between SMILES and natural language. FARM has been benchmarked on MoleculeNet (SOTA on most tasks) and provides atom-level and molecule-level embeddings. This model returns 768-dimensional molecule-level embeddings from the contrastive FARM BERT checkpoint.
 
-This model was incorporated on 2025-08-27.
-
+This model was incorporated on 2025-08-27.Last packaged on 2026-06-03.
 
 ## Information
 ### Identifiers
@@ -44,12 +43,19 @@ _10 of 768 columns are shown_
 ### Source and Deployment
 - **Source:** `Local`
 - **Source Type:** `External`
+- **DockerHub**: [https://hub.docker.com/r/ersiliaos/eos85mn](https://hub.docker.com/r/ersiliaos/eos85mn)
+- **Docker Architecture:** `AMD64`, `ARM64`
 - **S3 Storage**: [https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos85mn.zip](https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos85mn.zip)
 
 ### Resource Consumption
 - **Model Size (Mb):** `394`
 - **Environment Size (Mb):** `5196`
+- **Image Size (Mb):** `5975.07`
 
+**Computational Performance (seconds):**
+- 10 inputs: `33.93`
+- 100 inputs: `39.61`
+- 10000 inputs: `638.71`
 
 ### References
 - **Source Code**: [https://github.com/thaonguyen217/farm_molecular_representation](https://github.com/thaonguyen217/farm_molecular_representation)
