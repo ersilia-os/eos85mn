@@ -1,0 +1,20 @@
+name: Build ersilia-pack image (bypass)
+
+# Temporary manual workflow to rebuild and push the Docker image directly,
+# bypassing the test-model-source -> upload-model-to-s3 chain whose
+# "Update metadata to AirTable" step is intermittently failing (HTTP 406).
+# The image build does its own eosvc checkpoint download, so it does not
+# depend on the S3-zip/metadata bookkeeping steps.
+
+on:
+  workflow_dispatch:
+
+jobs:
+  upload-ersilia-pack:
+    uses: ersilia-os/ersilia-model-workflows/.github/workflows/upload-ersilia-pack.yml@main
+    with:
+      repo_name: ${{ github.event.repository.name }}
+      runner: ubuntu-latest
+    secrets:
+      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
