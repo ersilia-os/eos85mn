@@ -1,6 +1,6 @@
 Identifier: eos85mn
 Slug: farm-representation
-Status: In progress
+Status: Ready
 Title: FARM functional group-aware molecular representations
 Description: FARM is a molecular representation model that uses functional 
   group-aware tokenization, bridging the gap between SMILES and natural 
@@ -39,6 +39,18 @@ Source Code: https://github.com/thaonguyen217/farm_molecular_representation
 License: MIT
 Contributor: AnshikaVashistha
 Incorporation Date: '2025-08-27'
+Last Packaging Date: '2026-06-03'
+Release: v1.0.0
 S3: https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos85mn.zip
+DockerHub: https://hub.docker.com/r/ersiliaos/eos85mn
+Docker Architecture:
+  - AMD64
+  - ARM64
 Model Size: 394.0
 Environment Size: 5196.0
+Image Size: 5975.07
+Computational Performance 1: 33.93
+Computational Performance 2: 24.76
+Computational Performance 3: 39.61
+Computational Performance 4: 144.18
+Computational Performance 5: 638.71
