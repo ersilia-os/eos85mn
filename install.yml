@@ -1,8 +1,8 @@
 python: "3.10"
 commands:
-  - ["pip", "torch", "2.1.0"]
-  - ["pip", "transformers", "4.36.0"]
-  - ["pip", "tokenizers", "0.15.0"]
+  - ["pip", "torch", "2.4.1"]
+  - ["pip", "transformers", "4.44.2"]
+  - ["pip", "tokenizers", "0.19.1"]
   - ["pip", "numpy", "1.26.4"]
   - ["pip", "rdkit", "2023.3.3"]
   - ["pip", "ersilia-pack-utils", "0.1.5"]
