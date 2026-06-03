@@ -2,38 +2,40 @@ Identifier: eos85mn
 Slug: farm-representation
 Status: In progress
 Title: FARM functional group-aware molecular representations
-Description: FARM is a molecular representation model that uses functional group-aware
-  tokenization, bridging the gap between SMILES and natural language. FARM has been
-  benchmarked on MoleculeNet (SOTA on most tasks) and provides atom-level and
-  molecule-level embeddings. This model returns 768-dimensional molecule-level
-  embeddings from the contrastive FARM BERT checkpoint.
+Description: FARM is a molecular representation model that uses functional 
+  group-aware tokenization, bridging the gap between SMILES and natural 
+  language. FARM has been benchmarked on MoleculeNet (SOTA on most tasks) and 
+  provides atom-level and molecule-level embeddings. This model returns 
+  768-dimensional molecule-level embeddings from the contrastive FARM BERT 
+  checkpoint.
 Deployment:
-- Local
-- Online
+  - Local
+  - Online
 Source: Local
 Source Type: External
 Task: Representation
 Subtask: Featurization
 Input:
-- Compound
+  - Compound
 Input Dimension: 1
 Output:
-- Value
+  - Value
 Output Dimension: 768
 Output Consistency: Fixed
-Interpretation: 768-dimensional molecule-level embedding from the FARM contrastive BERT
-  model, suitable as input features for downstream property prediction. Individual
-  dimensions are not chemically interpretable. Sequences are truncated to 512 BERT
-  subword tokens during encoding.
+Interpretation: 768-dimensional molecule-level embedding from the FARM 
+  contrastive BERT model, suitable as input features for downstream property 
+  prediction. Individual dimensions are not chemically interpretable. Sequences 
+  are truncated to 512 BERT subword tokens during encoding.
 Tag:
-- Embedding
+  - Embedding
 Biomedical Area:
-- Any
+  - Any
 Target Organism:
-- Any
+  - Any
 Publication Type: Preprint
 Publication Year: 2024
 Publication: https://doi.org/10.48550/arXiv.2410.02082
 Source Code: https://github.com/thaonguyen217/farm_molecular_representation
 License: MIT
 Contributor: AnshikaVashistha
+Incorporation Date: '2025-08-27'
