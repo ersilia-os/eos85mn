@@ -1,6 +1,6 @@
 # FARM functional group-aware molecular representations
 
-FARM is a molecular representation model that uses functional group-aware tokenization, bridging the gap between SMILES and natural language. FARM has been benchmarked on MoleculeNet (SOTA on most tasks) and provides atom-level and molecule-level embeddings. This model returns 768-dimensional molecule-level embeddings from the contrastive FARM BERT checkpoint.
+FARM builds a 768-dimensional embedding around functional groups, tokenising SMILES so that recognised chemical moieties become units the language model sees directly rather than fragments it must infer. Nguyen and colleagues designed this to close the gap between how chemists reason about molecules and how sequence models read them, aligning the learned representation with structural intuition. Sequences are truncated during encoding, so very large molecules are represented only in part.
 
 This model was incorporated on 2025-08-27.Last packaged on 2026-06-03.
 
@@ -23,7 +23,7 @@ This model was incorporated on 2025-08-27.Last packaged on 2026-06-03.
 ### Output
 - **Output Dimension:** `768`
 - **Output Consistency:** `Fixed`
-- **Interpretation:** 768-dimensional molecule-level embedding from the FARM contrastive BERT model, suitable as input features for downstream property prediction. Individual dimensions are not chemically interpretable. Sequences are truncated to 512 BERT subword tokens during encoding.
+- **Interpretation:** 768 features encoding molecular structure from a functional-group-aware language model.
 
 Below are the **Output Columns** of the model:
 | Name | Type | Direction | Description |
