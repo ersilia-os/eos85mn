@@ -1,6 +1,6 @@
 # FARM functional group-aware molecular representations
 
-FARM builds a 768-dimensional embedding around functional groups, tokenising SMILES so that recognised chemical moieties become units the language model sees directly rather than fragments it must infer. Nguyen and colleagues designed this to close the gap between how chemists reason about molecules and how sequence models read them, aligning the learned representation with structural intuition. Sequences are truncated during encoding, so very large molecules are represented only in part.
+FARM builds a 768-dimensional molecule-level embedding around functional groups, tokenising SMILES so that a ketone oxygen and a hydroxyl oxygen become distinct units the language model sees directly rather than fragments it must infer. Nguyen and colleagues pretrained it on 20 million compounds from ChEMBL, ZINC and supplier catalogues, then aligned the sequence view with a functional-group graph view by contrastive learning, reaching the best reported scores on 11 of 13 MoleculeNet tasks. Input is truncated at 512 tokens, so very large molecules are only partly represented.
 
 This model was incorporated on 2025-08-27.Last packaged on 2026-06-03.
 
