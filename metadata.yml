@@ -2,14 +2,14 @@ Identifier: eos85mn
 Slug: farm-representation
 Status: Ready
 Title: FARM functional group-aware molecular representations
-Description: FARM builds a 768-dimensional molecule-level embedding around functional
-  groups, tokenising SMILES so that a ketone oxygen and a hydroxyl oxygen become distinct
-  units the language model sees directly rather than fragments it must infer. Nguyen
-  and colleagues pretrained it on 20 million compounds from ChEMBL, ZINC and supplier
-  catalogues, then aligned the sequence view with a functional-group graph view by
-  contrastive learning, reaching the best reported scores on 11 of 13 MoleculeNet
-  tasks. Input is truncated at 512 tokens, so very large molecules are only partly
-  represented.
+Description: FARM builds a 768-dimensional molecule-level embedding around 
+  functional groups, tokenising SMILES so that a ketone oxygen and a hydroxyl 
+  oxygen become distinct units the language model sees directly rather than 
+  fragments it must infer. Nguyen and colleagues pretrained it on 20 million 
+  compounds from ChEMBL, ZINC and supplier catalogues, then aligned the sequence
+  view with a functional-group graph view by contrastive learning, reaching the 
+  best reported scores on 11 of 13 MoleculeNet tasks. Input is truncated at 512 
+  tokens, so very large molecules are only partly represented.
 Deployment:
   - Local
   - Online
@@ -24,8 +24,8 @@ Output:
   - Value
 Output Dimension: 768
 Output Consistency: Fixed
-Interpretation: 768 features encoding molecular structure from a functional-group-aware
-  language model.
+Interpretation: 768 features encoding molecular structure from a 
+  functional-group-aware language model.
 Tag:
   - Embedding
 Biomedical Area:
@@ -40,7 +40,7 @@ License: MIT
 Contributor: AnshikaVashistha
 Incorporation Date: '2025-08-27'
 Last Packaging Date: '2026-06-03'
-Release: v1.0.0
+Release: v1.1.0
 S3: https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos85mn.zip
 DockerHub: https://hub.docker.com/r/ersiliaos/eos85mn
 Docker Architecture:
