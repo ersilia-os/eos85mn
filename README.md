@@ -2,7 +2,8 @@
 
 FARM builds a 768-dimensional molecule-level embedding around functional groups, tokenising SMILES so that a ketone oxygen and a hydroxyl oxygen become distinct units the language model sees directly rather than fragments it must infer. Nguyen and colleagues pretrained it on 20 million compounds from ChEMBL, ZINC and supplier catalogues, then aligned the sequence view with a functional-group graph view by contrastive learning, reaching the best reported scores on 11 of 13 MoleculeNet tasks. Input is truncated at 512 tokens, so very large molecules are only partly represented.
 
-This model was incorporated on 2025-08-27.Last packaged on 2026-06-03.
+This model was incorporated on 2025-08-27.
+Last packaged on 2026-06-03.
 
 ## Information
 ### Identifiers
@@ -46,6 +47,7 @@ _10 of 768 columns are shown_
 - **DockerHub**: [https://hub.docker.com/r/ersiliaos/eos85mn](https://hub.docker.com/r/ersiliaos/eos85mn)
 - **Docker Architecture:** `AMD64`, `ARM64`
 - **S3 Storage**: [https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos85mn.zip](https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos85mn.zip)
+- **Apptainer**: [https://models-sif.s3.eu-north-1.amazonaws.com/eos85mn_v1.sif](https://models-sif.s3.eu-north-1.amazonaws.com/eos85mn_v1.sif)
 
 ### Resource Consumption
 - **Model Size (Mb):** `394`
