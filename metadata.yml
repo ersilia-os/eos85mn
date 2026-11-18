@@ -40,7 +40,7 @@ License: MIT
 Contributor: AnshikaVashistha
 Incorporation Date: '2025-08-27'
 Last Packaging Date: '2026-06-03'
-Release: v1.1.0
+Release: v1.1.1
 S3: https://ersilia-models-zipped.s3.eu-central-1.amazonaws.com/eos85mn.zip
 DockerHub: https://hub.docker.com/r/ersiliaos/eos85mn
 Docker Architecture:
